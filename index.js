@@ -10,7 +10,7 @@ const app = express();
 // @res: response object
 // when app receives a GET request through route '/', the function gets called
 app.get('/', (req, res) => {
-	res.send({ hi: 'there' });
+	res.send({ oh: 'again' });
 });
 
 // Heroku injects an environment
