@@ -1,9 +1,11 @@
 // prod.js - production keys
 module.exports = {
-	googleClientID: process.env.GOOGLE_CLIENT_ID,
-	googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
-	mongoURI: process.env.MONGO_URI,
-	cookieKey: process.env.COOKIE_KEY
+  googleClientID: process.env.GOOGLE_CLIENT_ID,
+  googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
+  mongoURI: process.env.MONGO_URI,
+  cookieKey: process.env.COOKIE_KEY,
+  stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+  stripeSecretKey: process.env.STRIPE_SECRET_KEY,
 };
 // prod name: dbUser, key: GHuVPjMhNTGDezip
 // mongodb+srv://dbUser:GHuVPjMhNTGDezip@cluster0-4bdnr.mongodb.net/emaily-prod?retryWrites=true&w=majority

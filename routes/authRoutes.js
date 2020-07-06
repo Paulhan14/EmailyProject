@@ -12,13 +12,19 @@ module.exports = app => {
   );
 
   // Callback handler
-  app.get('/auth/google/callback', passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback', 
+    passport.authenticate('google'),
+    (req, res) => {
+      res.redirect('/surveys');
+    }
+  );
 
   app.get('/api/logout', (req, res) => {
     // PassportJS takes the user ID and kills the ID in this session
     req.logout();
     // Verify user is signed out
-    res.send(req.user);
+    res.redirect('/');
   });
 
   app.get('/api/current_user', (req, res) => {

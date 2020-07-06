@@ -25,23 +25,20 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/auth/google/callback',
-      proxy: true
+      proxy: true,
     },
     // access token: used to access user account
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // Search database for user with the google id
       // Asynchronous
-      User.findOne({ googleId: profile.id }).then((existingUser) => {
-        if (existingUser) {
-          // Not need to create new record
-          done(null, existingUser);
-        } else {
-          // Create new record, also asynchronous
-          new User({ googleId: profile.id })
-            .save()
-            .then((user) => done(null, user));
-        }
-      });
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
