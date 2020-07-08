@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 // Create user collection
 require('./models/User');
@@ -14,6 +15,7 @@ mongoose.connect(keys.mongoURI);
 // Webapp
 const app = express();
 
+// app.use: add middleware
 app.use(
     cookieSession({
         // 30 days
@@ -23,9 +25,11 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.json());
 
 // require() returns a function that takes in app object and attach to the app in the file
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app);
 
 // Heroku injects an environment
 const PORT = process.env.PORT || 5000; // default: 5000
