@@ -31,6 +31,14 @@ app.use(bodyParser.json());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+if (process.env.NODE_ENV === 'Production') {
+    app.use(express.static('client/build'));
+    const path = require('path');
+    app.get('*', (res, req) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
+
 // Heroku injects an environment
 const PORT = process.env.PORT || 5000; // default: 5000
 // Express is telling Node to listen on port 5000
