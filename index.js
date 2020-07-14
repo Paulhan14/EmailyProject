@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 // Create user collection
 require('./models/User');
+require('./models/Survey');
 // after login, retreive user object or construct one
 require('./services/passport');
 
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 // require() returns a function that takes in app object and attach to the app in the file
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
+require('./routes/surveyRoutes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));

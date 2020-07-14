@@ -6,6 +6,8 @@ module.exports = {
   cookieKey: process.env.COOKIE_KEY,
   stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+  sendGridKey: process.env.SEND_GRID_KEY,
+  redirectDomain: process.env.REDIRECT_DOMAIN,
 };
 // prod name: dbUser, key: GHuVPjMhNTGDezip
 // mongodb+srv://dbUser:GHuVPjMhNTGDezip@cluster0-4bdnr.mongodb.net/emaily-prod?retryWrites=true&w=majority

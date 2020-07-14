@@ -11,6 +11,8 @@ import reduxThunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
+import axios from 'axios';
+window.axios = axios;
 
 /*
 The store has the following responsibilities:

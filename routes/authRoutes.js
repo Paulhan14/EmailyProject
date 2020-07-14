@@ -1,6 +1,6 @@
 const passport = require('passport');
 
-module.exports = app => {
+module.exports = (app) => {
   // Route handler for Google OAuth, awake passport
   // 'google': tells passport to use Google Strategy
   // scope: we need access for user's profile and email
@@ -13,7 +13,7 @@ module.exports = app => {
 
   // Callback handler
   app.get(
-    '/auth/google/callback', 
+    '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
       res.redirect('/surveys');
